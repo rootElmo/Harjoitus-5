@@ -2,7 +2,7 @@
 
 Tämän harjoituksen tavoitteena oli opetella käyttämään Saltin muotteja, sekä luoda muutamia tiloja Saltin tavallisia toimintoja käyttäen.
 
-Olen ennen harjoituksen tekoa asentanut uuden orja-koneen **'e008'**, ja tähän openssh-serverin SSH-yhteyttä varten käyttäen [tekemääni skriptiä.](https://github.com/rootElmo/Agent-Setter)
+Olen ennen harjoituksen tekoa asentanut uuden 64-bittisen Xubuntu orja-koneen **'e008'**, ja tähän openssh-serverin SSH-yhteyttä varten käyttäen [tekemääni skriptiä.](https://github.com/rootElmo/Agent-Setter)
 
 #### Hello templates! Tee muotilla esimerkkitiedosto, jossa on muuttujien (esim grains) arvoja.
 
@@ -63,9 +63,16 @@ Tila siis ajautui onnistuneesti ja tiedossa oli grainsista saatu oikea tieto orj
 
 ![scrshot5](../images/scrshot005.png)
 
+## Message of the Day
+
+Tämän tehtävän tavoitteena oli muokata Ubuntun antamaa motd:ia, kun koneelle kirjaudutaan sisään, tai otetaan yhteys SSH:lla. Tällaisesta nivaskasta on siis kyse:
+
+![scrshot6](../images/scrshot006.png)
+
+Otin siis yhteyden orja-koneelle SSH:lla ja tämän onnistuttua sain tervehdykseksi kyseisen motd:in.
 
 ## Lähteet
 
 Tero Karvinen: http://terokarvinen.com/2020/configuration-managment-systems-palvelinten-hallinta-ict4tn022-spring-2020/
 
-SALTSTACK: https://docs.saltstack.com/en/master/topics/tutorials/states_pt3.html
+SALTSTACK: https://docs.saltstack.com/en/master/topics/tutorials/states_pt3.html, https://docs.saltstack.com/en/getstarted/config/jinja.html
