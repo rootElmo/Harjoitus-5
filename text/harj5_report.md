@@ -38,6 +38,22 @@ Testasin seuraavaksi Saltin avulla herra-koneelta, oliko tiedosto oikeasti paika
 
 Homma pelittää tähän asti!
 
+Seuraavaksi muutin _hello.txt_-tiedoston seuraavaan muotoon:
+
+	Your agent-computer's CPU is {{ grains[cpu_model] }}
+
+ja _init.sls_-tiedoston seuraavaan muotoon:
+
+	/tmp/hello.txt:
+	  file.managed:
+	    - source: salt://hellojinja/hello.txt
+	    - template: jinja
+
+Ajoin tilan aktiiviseksi, mutta sain virheilmoituksen:
+
+![scrshot4](../images/scrshot004.png)
+
+Muuttujaa 'cpu_model' ei selvästikään oltu määritelty. En ihan ymmärtänyt tätä laajemmassa kontekstissam joten päätin lueskella internetistä ohjeita ja dokumentaatiota.
 ## Lähteet
 
 Tero Karvinen: http://terokarvinen.com/2020/configuration-managment-systems-palvelinten-hallinta-ict4tn022-spring-2020/
