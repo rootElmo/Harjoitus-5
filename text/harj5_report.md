@@ -237,7 +237,28 @@ Kokeilin seuraavaksi katsoa saltilla, pyöriikö Nginx ja että näkyykö sen ol
 
 ![scrshot17](../images/scrshot017.png)
 
+Seuraavaksi kokeilin orja-koneella SSH:n kautta uuden _index.html_-sivun luomista. Linkkaamassani ohjeessa asiaan perehdytään ehkä turhan monimutkaisesti, joten kokeilin vain luoda kevyen _index.html_-sivun orja-koneella kansioon **/var/www/**, jossa myös aikaisempi etusivu on. Seuraavaksi kokeilin selaimella orja-koneen IP-osoitetta ja homma toimi heti alkuunsa!
 
+![scrshot18](../images/scrshot018.png)
+
+Loin uuden kevyen _index.html_-sivun herra-koneella ja muutin _init.sls_-tiedoston seuraavaan muotoon:
+
+	/var/www/index.html:
+	  file.managed:
+	    - source: salt://nginx/index.html
+
+	nginx:
+	  pkg.installed: []
+
+	nginx.service:
+	  service.running:
+	    - watch:
+	      - file: /var/www/*
+
+
+Veisin siis luomani sivun orja-koneelle ja Nginx tarkkailisi kyseistä tiedostoa muutosten varalta ja käynnistyisi uudestaan muutosten sattuessa. Seuraavaksi ajoin tilan aktiiviseksi onnistuneesti.
+
+[scrshot19](../images/scrshot19.png)
 
 
 
