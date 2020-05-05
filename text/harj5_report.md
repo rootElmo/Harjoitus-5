@@ -71,8 +71,27 @@ Tämän tehtävän tavoitteena oli muokata Ubuntun antamaa motd:ia, kun koneelle
 
 Otin siis yhteyden orja-koneelle SSH:lla ja tämän onnistuttua sain tervehdykseksi kyseisen motd:in.
 
+Aloitin luomalla kansion **motdTemp** sijaintiin ***/srv/salt*** uuden salt-tilan luomiseksi. Loin myös _init.sls_-tiedoston
+
+	/etc/motd:
+	  file.managed:
+	    - source: salt://motdTemp/motd
+
+Ja siirrettävän _motd_-tiedoston. Tiedostossa tällä hetkellä vain teksti '_Terve!_'.
+
+Ubuntu luo automaattisesti oman motd:insa tiettyjen skriptien mukaan ja tämän _motd_-tiedoston sisällön pitäisi näkyä tämän aikaisemman motd:in perässä.
+
+Ajoin seuraavaksi luomani tilan aktiiviseksi, joka onnistui. Tämän jälkeen tarkastin _motd_-tiedoston olemassaolon orja-koneelta.
+
+	master $ sudo salt 'e008' state.apply motdTemp
+	master $ sudo salt 'e008' cmd.run 'cat /etc/motd'
+
+![scrshot7](../images/scrshot007.png)
+
 ## Lähteet
 
 Tero Karvinen: http://terokarvinen.com/2020/configuration-managment-systems-palvelinten-hallinta-ict4tn022-spring-2020/
 
 SALTSTACK: https://docs.saltstack.com/en/master/topics/tutorials/states_pt3.html, https://docs.saltstack.com/en/getstarted/config/jinja.html
+
+Linuxconfig: https://linuxconfig.org/how-to-change-welcome-message-motd-on-ubuntu-18-04-server
