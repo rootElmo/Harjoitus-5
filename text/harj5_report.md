@@ -88,6 +88,29 @@ Ajoin seuraavaksi luomani tilan aktiiviseksi, joka onnistui. Tämän jälkeen ta
 
 ![scrshot7](../images/scrshot007.png)
 
+Tämän jälkeen katsoin, näkyisikö uusi motd SSH-yhteyden onnistuessa orja-koneelle. Terminaalin tuloste saadusta motdista:
+
+	elmo@192.168.1.110's password: 
+	Welcome to Ubuntu 18.04.4 LTS (GNU/Linux 5.3.0-51-generic x86_64)
+
+	 * Documentation:  https://help.ubuntu.com
+	 * Management:     https://landscape.canonical.com
+	 * Support:        https://ubuntu.com/advantage
+
+
+	 * Canonical Livepatch is available for installation.
+	   - Reduce system reboots and improve kernel security. Activate at:
+	     https://ubuntu.com/livepatch
+
+	0 packages can be updated.
+	0 updates are security updates.
+
+	Your Hardware Enablement Stack (HWE) is supported until April 2023.
+	Terve!
+	Last login: Tue May  5 12:28:39 2020 from 192.168.1.103
+
+_motd_-tiedostoon kirjoittamani '_Terve!_' näkyy saamassani motd:issa! Ajattelin seuraavaksi poistaa automaattisesti skripteillä luodun motd:in ennen kuin muokkaisin omaa motd:iani yhtään pidemmälle
+
 ## Lähteet
 
 Tero Karvinen: http://terokarvinen.com/2020/configuration-managment-systems-palvelinten-hallinta-ict4tn022-spring-2020/
