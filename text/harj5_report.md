@@ -173,7 +173,7 @@ Otin SSH-yhteyden orjakoneelle ja kokeilin erilaisia bashin kustomointi-temppuja
 
 Aluksi tein kuten linkatussa artikkelissa oli tehty; tallensin PS1:n eli bashin oletusasetukset DEFAULT-muuttujaan
 
-	slave $ DEFAULT=$PS1
+	agent $ DEFAULT=$PS1
 
 Jos sössisin jotenkin bashin kustomoinnin voisin komennolla
 
@@ -227,7 +227,7 @@ Ajoin tilan aktiiviseksi ja salt kertoi ohjelman asentuneen:
 
 Näin myös kävi! Seuraavaksi etsisin find-komennolla luodut tiedostot saltin avulla.
 
-	sudo salt 'e008' cmd.run 'find / -printf "%T+ %p\n" | sort | grep nginx'
+	master $ sudo salt 'e008' cmd.run 'find / -printf "%T+ %p\n" | sort | grep nginx'
 
 Vastauksena tuli pitkä lista, jossa oli se mitä osasin arvella; **/etc/nginx**-kansiossa olisi uusia luotuja tiedostoja. En kuitenkaan olut täysin varma koko ohjelman toiminnasta, joten päätin selailla hetken internettiä.
 
@@ -258,8 +258,27 @@ Loin uuden kevyen _index.html_-sivun herra-koneella ja muutin _init.sls_-tiedost
 
 Veisin siis luomani sivun orja-koneelle ja Nginx tarkkailisi kyseistä tiedostoa muutosten varalta ja käynnistyisi uudestaan muutosten sattuessa. Seuraavaksi ajoin tilan aktiiviseksi onnistuneesti.
 
-[scrshot19](../images/scrshot19.png)
+[scrshot19](../images/scrshot019.png)
 
+Huomasin kuitenkin tehneeni virheen tilan määrittelyssä. Olin tunkenut luomani index.html sivun kansioon **/var/www/**, vaikka sen kuuluisi olla kansiossa **/var/www/html**. Tajusin katsoa tätä, kun orja-koneen IP-osoitteessa näkyvä etusivu ei muuttunut. Muutin siis _init.sls_:n seuraavaan muotoon:
+
+	/var/www/html/index.html:
+	  file.managed:
+	    - source: salt://nginx/index.html
+
+	nginx:
+	  pkg.installed: []
+
+	nginx.service:
+	  service.running:
+	    - watch:
+	      - file: /var/www/html/index.html
+
+Ajoin tilan aktiiviseksi onnistuneesti ja etusivukin muuttui, kun laitoin selaimeen orja-koneen IP-osoitteen!
+
+![scrshot20](../images/scrshot020.png)
+
+Näiltä osin olin saanut tämänkin tehtävän onnistuneesti päätökseen!
 
 
 ## Lähteet
@@ -271,3 +290,5 @@ SALTSTACK: https://docs.saltstack.com/en/master/topics/tutorials/states_pt3.html
 Linuxconfig: https://linuxconfig.org/how-to-change-welcome-message-motd-on-ubuntu-18-04-server
 
 Digitalocean (Nginx-tutoriaali): https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-18-04-quickstart
+
+Vitux (bash kustomointi): https://vitux.com/how-to-customize-ubuntu-bash-prompt/
