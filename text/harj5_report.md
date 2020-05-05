@@ -4,7 +4,7 @@ Tämän harjoituksen tavoitteena oli opetella käyttämään Saltin muotteja, se
 
 Olen ennen harjoituksen tekoa asentanut uuden 64-bittisen Xubuntu orja-koneen **'e008'**, ja tähän openssh-serverin SSH-yhteyttä varten käyttäen [tekemääni skriptiä.](https://github.com/rootElmo/Agent-Setter)
 
-#### Hello templates! Tee muotilla esimerkkitiedosto, jossa on muuttujien (esim grains) arvoja.
+### Hello templates! Tee muotilla esimerkkitiedosto, jossa on muuttujien (esim grains) arvoja.
 
 Aloitin luomalla uuden tilan, ja tälle kansion **hellojinja** sijaintiin ***/srv/salt/***. Loin tilalle tarvittavan _init.sls_-tiedoston komennolla
 
@@ -160,6 +160,32 @@ Ajoin tilan aktiiviseksi onnistuneesti ja testasin SSH:lla, tulisiko motd:iin te
 ![scrshot10](../images/scrshot010.png)
 
 Näin tapahtui! Tämä tehtävä ja viimeinen extra-tehtävä saatiin siis tehtyä onnistuneesti!
+
+## Bash. Tee bashiin asetuksia Saltilla
+
+Olin jo oppinut harjoituksessa 4, että ohjelmien käyttäjäkohtaiset asetustiedostot löytyisivät kunkin käyttäjän kotihakemistosta. Kävin orja-koneella SSH:n kautta katselemassa kotihakemistoa ja komennolla
+
+	agent $ ls -a
+
+löysin tiedoston _.bashrc_, jonka oletin olevan bashin asetustiedosto. Lueskelin vähän netistä ja oletukseni oli oikeasa. Löysin samalla [suht kattavan artikkelin](https://vitux.com/how-to-customize-ubuntu-bash-prompt/) bashin asetuksien muuttamisesta. Päätin käyttää sitä apuna.
+
+Otin SSH-yhteyden orjakoneelle ja kokeilin erilaisia bashin kustomointi-temppuja.
+
+Aluksi tein kuten linkatussa artikkelissa oli tehty; tallensin PS1:n eli bashin oletusasetukset DEFAULT-muuttujaan
+
+	slave $ DEFAULT=$PS1
+
+Jos sössisin jotenkin bashin kustomoinnin voisin komennolla
+
+	PS1=$DEFAULT
+
+palauttaa alkuperäiset asetukset.
+
+Tämän jälkeen kikkailin vähän värien ja muiden kanssa:
+
+![scrshot11](../images/scrshot011.png)
+
+
 
 ## Lähteet
 
