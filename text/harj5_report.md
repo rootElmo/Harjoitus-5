@@ -128,6 +128,39 @@ Ajoin tilan aktiiviseksi ja se onnistui! Viestistä näkyy myös, että skriptit
 
 ![scrshot8](../images/scrshot008.png)
 
+Testasin näkyykö motd:ssa enää vain pelkkä 'Terve!'
+
+![scrshot9](../images/scrshot009.png)
+
+Ja näin näyttää näkyvän! Homma siis pelittää tähän asti.
+
+Tein pari muutosta _motd_-tiedostoon; hakisin grainsilla tietoja orja-koneesta ja lisäisin ne motd:iin. Muokkasin samalla _init.sls_-tiedoston muottien käyttöä varten. Prosessi oli hyvin samanlainen, kuin aikaisemmassa tehtävässä.
+
+init.sls tämän jälkeen:
+
+	/etc/update-motd.d:
+	  file.recurse:
+	    - clean: True
+	    - source: salt://motdTemp/update-motd.d
+
+	/etc/motd:
+	  file.managed:
+	    - source: salt://motdTemp/motd
+	    - template: jinja
+
+motd myös muokattuna:
+
+	Hello!
+
+	Logged into agent '{{grains['id']}}'
+	OS: {{ grains['osfullname'], grains['osrelease'] }} 
+
+Ajoin tilan aktiiviseksi onnistuneesti ja testasin SSH:lla, tulisiko motd:iin tehdyt muutokset.
+
+![scrshot10](../images/scrshot010.png)
+
+Näin tapahtui! Tämä tehtävä ja viimeinen extra-tehtävä saatiin siis tehtyä onnistuneesti!
+
 ## Lähteet
 
 Tero Karvinen: http://terokarvinen.com/2020/configuration-managment-systems-palvelinten-hallinta-ict4tn022-spring-2020/
