@@ -258,7 +258,7 @@ Loin uuden kevyen _index.html_-sivun herra-koneella ja muutin _init.sls_-tiedost
 
 Veisin siis luomani sivun orja-koneelle ja Nginx tarkkailisi kyseistä tiedostoa muutosten varalta ja käynnistyisi uudestaan muutosten sattuessa. Seuraavaksi ajoin tilan aktiiviseksi onnistuneesti.
 
-[scrshot19](../images/scrshot019.png)
+![scrshot19](../images/scrshot019.png)
 
 Huomasin kuitenkin tehneeni virheen tilan määrittelyssä. Olin tunkenut luomani index.html sivun kansioon **/var/www/**, vaikka sen kuuluisi olla kansiossa **/var/www/html**. Tajusin katsoa tätä, kun orja-koneen IP-osoitteessa näkyvä etusivu ei muuttunut. Muutin siis _init.sls_:n seuraavaan muotoon:
 
