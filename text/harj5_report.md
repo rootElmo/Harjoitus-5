@@ -54,6 +54,16 @@ Ajoin tilan aktiiviseksi, mutta sain virheilmoituksen:
 ![scrshot4](../images/scrshot004.png)
 
 Muuttujaa 'cpu_model' ei selvästikään oltu määritelty. En ihan ymmärtänyt tätä laajemmassa kontekstissam joten päätin lueskella internetistä ohjeita ja dokumentaatiota.
+
+Pienin kikkailun ja kokeilun jälkeen kokeilun jälkeen sain kuin sainkin tiedoston toimimaan. Ongelmana olivat olemattomat hapsut 'cpu_model':in ympärillä. _hello.txt_ näytti näiden toimenpiteiden jälkeen tältä:
+
+	Your agent-computer's CPU is {{ grains['cpu_model'] }}
+
+Tila siis ajautui onnistuneesti ja tiedossa oli grainsista saatu oikea tieto orja-koneella:
+
+![scrshot5](../images/scrshot005.png)
+
+
 ## Lähteet
 
 Tero Karvinen: http://terokarvinen.com/2020/configuration-managment-systems-palvelinten-hallinta-ict4tn022-spring-2020/
