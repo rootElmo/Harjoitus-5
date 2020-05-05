@@ -231,6 +231,15 @@ Näin myös kävi! Seuraavaksi etsisin find-komennolla luodut tiedostot saltin a
 
 Vastauksena tuli pitkä lista, jossa oli se mitä osasin arvella; **/etc/nginx**-kansiossa olisi uusia luotuja tiedostoja. En kuitenkaan olut täysin varma koko ohjelman toiminnasta, joten päätin selailla hetken internettiä.
 
+Löysin artikkelin, jossa käytiin läpi Nginx:n asennus ja nopea konffaus. [Linkki siihen.](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-18-04-quickstart)
+
+Kokeilin seuraavaksi katsoa saltilla, pyöriikö Nginx ja että näkyykö sen oletus sivu selaimella, jos kyselen orja-koneen IP-osoitteella.
+
+![scrshot17](../images/scrshot017.png)
+
+
+
+
 
 ## Lähteet
 
@@ -239,3 +248,5 @@ Tero Karvinen: http://terokarvinen.com/2020/configuration-managment-systems-palv
 SALTSTACK: https://docs.saltstack.com/en/master/topics/tutorials/states_pt3.html, https://docs.saltstack.com/en/getstarted/config/jinja.html
 
 Linuxconfig: https://linuxconfig.org/how-to-change-welcome-message-motd-on-ubuntu-18-04-server
+
+Digitalocean (Nginx-tutoriaali): https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-18-04-quickstart
