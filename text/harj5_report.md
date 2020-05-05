@@ -26,7 +26,17 @@ ja katsoin, oliko tiedosto paikallaan _cat_ komennolla.
 
 Ajoin tämän jälkeen tilan aktiiviseksi:
 
+	master $ sudo salt 'e008' state.apply hellojinja
+
 ![scrshot2](../images/scrshot002.png)
+
+Testasin seuraavaksi Saltin avulla herra-koneelta, oliko tiedosto oikeasti paikallaan ja sisälsikö se sen, mitä olin sinne kirjoittanut
+
+	master $ sudo salt 'e008' cmd.run 'cat /tmp/hello.txt'
+
+![scrshot3](../images/scrshot003.png)
+
+Homma pelittää tähän asti!
 
 ## Lähteet
 
