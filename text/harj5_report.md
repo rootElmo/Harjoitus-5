@@ -195,7 +195,7 @@ Ajoin tilan onnistuneesti aktiiviseksi.
 
 ![scrshot12](../images/scrshot012.png)
 
-Muutin tämän jälkeen _bash.rc_-tiedostossa kohtaa, jossa promptin väri määritellään vihreäksi. Halusin sen luonnollisesti punaiseksi pelottaakseni mahdolliset tunkeutujat räikeällä ulosannillani.
+Muutin tämän jälkeen _bash.rc_-tiedostossa kohtaa, jossa promptin väri määritellään vihreäksi. Halusin sen luonnollisesti punaiseksi pelottaakseni mahdolliset tunkeutujat räikeällä virtuaalisella ulosannillani.
 
 Maalattuna muutettu värikoodi:
 
@@ -211,7 +211,25 @@ Ja homma pelittää niinkuin pitää! Päätin vielä lisätä kellon ajan muutt
 
 Tämä onnistui!
 
+Koen näin saaneeni päätökseen tämän tehtävän.
 
+
+## Nginx
+
+Tämän tehtävän aikana olisi tarkoituksena olisi asentaa Nginx orja-koneelle. Aloitin taas perinteiseen tapaan luomalla uuden kansion salt-tilaa varten (***/srv/salt/nginx***). Tein myös nopeasti _init.sls_-tiedoston:
+
+	nginx:
+	  pkg.installed: []
+
+Ajoin tilan aktiiviseksi ja salt kertoi ohjelman asentuneen:
+
+![scrshot16](../images/scrshot016.png)
+
+Näin myös kävi! Seuraavaksi etsisin find-komennolla luodut tiedostot saltin avulla.
+
+	sudo salt 'e008' cmd.run 'find / -printf "%T+ %p\n" | sort | grep nginx'
+
+Vastauksena tuli pitkä lista, jossa oli se mitä osasin arvella; **/etc/nginx**-kansiossa olisi uusia luotuja tiedostoja. En kuitenkaan olut täysin varma koko ohjelman toiminnasta, joten päätin selailla hetken internettiä.
 
 
 ## Lähteet
