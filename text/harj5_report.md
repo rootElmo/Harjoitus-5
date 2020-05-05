@@ -195,7 +195,21 @@ Ajoin tilan onnistuneesti aktiiviseksi.
 
 ![scrshot12](../images/scrshot012.png)
 
+Muutin tämän jälkeen _bash.rc_-tiedostossa kohtaa, jossa promptin väri määritellään vihreäksi. Halusin sen luonnollisesti punaiseksi pelottaakseni mahdolliset tunkeutujat räikeällä ulosannillani.
 
+Maalattuna muutettu värikoodi:
+
+![scrshot13](../images/scrshot013.png)
+
+Ajoin tilan onnistuneesti aktiiviseksi ja testasin SSH:lla, olisiko muutos voimassa.
+
+![scrshot14](../images/scrshot014.png)
+
+Ja homma pelittää niinkuin pitää! Päätin vielä lisätä kellon ajan muuttamalla _.bashrc_-tiedostoa samalla tavalla. Pitkähköön PS1:n määritelmään täytyisi lisätä '\A ' heti punaisen värin määrittelyn jälkeen.
+
+![scrshot15](../images/scrshot015.png)
+
+Tämä onnistui!
 
 
 
