@@ -185,6 +185,19 @@ Tämän jälkeen kikkailin vähän värien ja muiden kanssa:
 
 ![scrshot11](../images/scrshot011.png)
 
+Palautin myös asetukset normaaleiksi. Kopion tämän jälkeen _.bashrc_-tiedoston herra-koneella luomaani kansioon ***/srv/salt/bashtest***, jotta voisin tehdä salt-tilan ja ajaa bashiin tehdyt muutokset orja-koneelle. Loin tilaa varten kansioon _init.sls_-tiedoston:
+
+	/home/elmo/.bashrc:
+	  file.managed:
+	    - source: salt://bashtest/.bashrc
+
+Ajoin tilan onnistuneesti aktiiviseksi.
+
+![scrshot12](../images/scrshot012.png)
+
+
+
+
 
 
 ## Lähteet
