@@ -109,7 +109,24 @@ Tämän jälkeen katsoin, näkyisikö uusi motd SSH-yhteyden onnistuessa orja-ko
 	Terve!
 	Last login: Tue May  5 12:28:39 2020 from 192.168.1.103
 
-_motd_-tiedostoon kirjoittamani '_Terve!_' näkyy saamassani motd:issa! Ajattelin seuraavaksi poistaa automaattisesti skripteillä luodun motd:in ennen kuin muokkaisin omaa motd:iani yhtään pidemmälle
+_motd_-tiedostoon kirjoittamani '_Terve!_' näkyy saamassani motd:issa! Ajattelin seuraavaksi poistaa automaattisesti skripteillä luodun motd:in ennen kuin muokkaisin omaa motd:iani yhtään pidemmälle.
+
+Olin jo oppinut, että Ubuntu luo motd:insa skripteistä, jotka sijaitsevat kansiossa ***/etc/update-motd.d***. Tehtävänä olisi siis tyhjentää tuo kansio. Loin _motdTemp_-tilaan uuden kansion _update-motd.d_ ja sinne tiedoston _important.txt_, jotka vietäisiin orja-koneelle samannimisen kansion tilalle. Muokkasin myös _init.sls_-tiedoston seuraavanlaiseksi:
+
+	/etc/update-motd.d:
+	  file.recurse:
+	    - clean: True
+	    - source: salt://motdTemp/update-motd.d
+
+	/etc/motd:
+	  file.managed:
+	    - source: salt://motdTemp/motd
+
+_file.recurse_ vie kansion tiedostoineen ja _clean: True_ putsaa ensiksi alta kaiken jo siellä olevan.
+
+Ajoin tilan aktiiviseksi ja se onnistui! Viestistä näkyy myös, että skriptitiedostot katosivat orja-koneen _update-motd.d_-kansiosta:
+
+![scrshot8](../images/scrshot008.png)
 
 ## Lähteet
 
