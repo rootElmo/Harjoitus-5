@@ -24,6 +24,10 @@ ja katsoin, oliko tiedosto paikallaan _cat_ komennolla.
 
 ![scrshot1](../images/scrshot001.png)
 
+Ajoin tämän jälkeen tilan aktiiviseksi:
+
+![scrshot2](../images/scrshot002.png)
+
 ## Lähteet
 
 Tero Karvinen: http://terokarvinen.com/2020/configuration-managment-systems-palvelinten-hallinta-ict4tn022-spring-2020/
